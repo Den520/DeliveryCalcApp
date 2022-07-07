@@ -23,7 +23,7 @@ namespace DeliveryCalcApp
         public string companyName;
         public DateTime dateOfDelivery;
         public double price;
-        
+
         private void acceptOrderButton_Click(object sender, EventArgs e)
         {
             if (!lastNameMaskedTextBox.MaskCompleted || !nameMaskedTextBox.MaskCompleted || !phoneMaskedTextBox.MaskCompleted)

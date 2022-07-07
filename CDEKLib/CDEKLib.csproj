@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy bin\Debug\netstandard2.0\CDEKLib.dll ..\bin\Debug&#xD;&#xA;copy bin\Debug\netstandard2.0\CDEKLib.pdb ..\bin\Debug" />
+  </Target>
+
 </Project>

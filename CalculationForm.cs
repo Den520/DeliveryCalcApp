@@ -1,18 +1,26 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
-
-using BoxberryLib;
-using CDEKLib;
-using RussianPostLib;
-
 
 namespace DeliveryCalcApp
 {
     public partial class CalculationForm : Form
     {
+        dynamic Boxberry;
+        dynamic CDEK;
+        dynamic RussianPost;
+
         public CalculationForm()
         {
             InitializeComponent();
+
+            //динамическое добавление библиотек
+            Assembly BoxberryLib = Assembly.LoadFrom("BoxberryLib.dll");
+            Boxberry = Activator.CreateInstance(BoxberryLib.GetType("BoxberryLib.Boxberry"));
+            Assembly CDEKLib = Assembly.LoadFrom("CDEKLib.dll");
+            CDEK = Activator.CreateInstance(CDEKLib.GetType("CDEKLib.CDEK"));
+            Assembly RussianPostLib = Assembly.LoadFrom("RussianPostLib.dll");
+            RussianPost = Activator.CreateInstance(RussianPostLib.GetType("RussianPostLib.RussianPost"));
         }
 
         double length;
@@ -51,7 +59,6 @@ namespace DeliveryCalcApp
             destinationAddress = destinationAddressTextBox.Text;
             fromDoor = fromDoorCheckBox.Checked;
             toDoor = toDoorCheckBox.Checked;
-
 
             if (Boxberry.CheckAvailability(length, width, height, weight))
             {

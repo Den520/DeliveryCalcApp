@@ -119,20 +119,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BoxberryLib\BoxberryLib.csproj">
-      <Project>{df20f6b2-f273-496a-8bb4-b83db9127d20}</Project>
-      <Name>BoxberryLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="CDEKLib\CDEKLib.csproj">
-      <Project>{f0b73e2f-56ae-478e-a28f-c7d5b67b74de}</Project>
-      <Name>CDEKLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="RussianPostLib\RussianPostLib.csproj">
-      <Project>{36b6e4a3-2139-40dd-b4bf-96074c466394}</Project>
-      <Name>RussianPostLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -162,4 +148,8 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
