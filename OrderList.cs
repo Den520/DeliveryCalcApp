@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
-using DataTable = System.Data.DataTable;
 using System.IO;
+using System.Windows.Forms;
+using DataTable = System.Data.DataTable;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DeliveryCalcApp
 {
@@ -76,24 +75,10 @@ namespace DeliveryCalcApp
                 workSheet.Cells[1, 18] = "Номер телефона";
                 for (int i = 0; i < ordersDataGridView.Rows.Count; i++)
                 {
-                    workSheet.Cells[i + 2, 1] = ordersDataGridView.Rows[i].Cells[0].Value;
-                    workSheet.Cells[i + 2, 2] = ordersDataGridView.Rows[i].Cells[1].Value;
-                    workSheet.Cells[i + 2, 3] = ordersDataGridView.Rows[i].Cells[2].Value;
-                    workSheet.Cells[i + 2, 4] = ordersDataGridView.Rows[i].Cells[3].Value;
-                    workSheet.Cells[i + 2, 5] = ordersDataGridView.Rows[i].Cells[4].Value;
-                    workSheet.Cells[i + 2, 6] = ordersDataGridView.Rows[i].Cells[5].Value;
-                    workSheet.Cells[i + 2, 7] = ordersDataGridView.Rows[i].Cells[6].Value;
-                    workSheet.Cells[i + 2, 8] = ordersDataGridView.Rows[i].Cells[7].Value;
-                    workSheet.Cells[i + 2, 9] = ordersDataGridView.Rows[i].Cells[8].Value;
-                    workSheet.Cells[i + 2, 10] = ordersDataGridView.Rows[i].Cells[9].Value;
-                    workSheet.Cells[i + 2, 11] = ordersDataGridView.Rows[i].Cells[10].Value;
-                    workSheet.Cells[i + 2, 12] = ordersDataGridView.Rows[i].Cells[11].Value;
-                    workSheet.Cells[i + 2, 13] = ordersDataGridView.Rows[i].Cells[12].Value;
-                    workSheet.Cells[i + 2, 14] = ordersDataGridView.Rows[i].Cells[13].Value;
-                    workSheet.Cells[i + 2, 15] = ordersDataGridView.Rows[i].Cells[14].Value;
-                    workSheet.Cells[i + 2, 16] = ordersDataGridView.Rows[i].Cells[15].Value;
-                    workSheet.Cells[i + 2, 17] = ordersDataGridView.Rows[i].Cells[16].Value;
-                    workSheet.Cells[i + 2, 18] = ordersDataGridView.Rows[i].Cells[17].Value;
+                    for (int j = 1; j < ordersDataGridView.Rows[i].Cells.Count + 1; j++)
+                    {
+                        workSheet.Cells[i + 2, j] = ordersDataGridView.Rows[i].Cells[j - 1].Value;
+                    }
                 }
                 File.Delete(saveFileDialog.FileName);
                 workSheet.SaveAs(saveFileDialog.FileName);
